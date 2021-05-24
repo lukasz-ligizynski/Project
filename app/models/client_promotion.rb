@@ -1,0 +1,2 @@
+class ClientPromotion < ApplicationRecord
+end
