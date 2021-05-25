@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_25_083627) do
+ActiveRecord::Schema.define(version: 2021_05_25_084611) do
 
   create_table "client_promotions", force: :cascade do |t|
     t.integer "promotions_id"
@@ -81,12 +81,13 @@ ActiveRecord::Schema.define(version: 2021_05_25_083627) do
   end
 
   create_table "tickets", force: :cascade do |t|
-    t.integer "reservation_id"
     t.string "seat"
-    t.string "type"
-    t.integer "price"
+    t.string "ticket_type"
+    t.float "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "reservations_id"
+    t.index ["reservations_id"], name: "index_tickets_on_reservations_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -99,4 +100,5 @@ ActiveRecord::Schema.define(version: 2021_05_25_083627) do
   add_foreign_key "reservations", "ticket_desks", column: "ticket_desks_id"
   add_foreign_key "seances", "halls", column: "halls_id"
   add_foreign_key "seances", "movies", column: "movies_id"
+  add_foreign_key "tickets", "reservations", column: "reservations_id"
 end
