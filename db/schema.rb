@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_25_082316) do
+ActiveRecord::Schema.define(version: 2021_05_25_083627) do
 
   create_table "client_promotions", force: :cascade do |t|
     t.integer "promotions_id"
@@ -64,12 +64,14 @@ ActiveRecord::Schema.define(version: 2021_05_25_082316) do
   end
 
   create_table "seances", force: :cascade do |t|
-    t.integer "movie_id"
-    t.integer "hall_id"
     t.integer "duration"
-    t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "movies_id"
+    t.integer "halls_id"
+    t.datetime "seance_date"
+    t.index ["halls_id"], name: "index_seances_on_halls_id"
+    t.index ["movies_id"], name: "index_seances_on_movies_id"
   end
 
   create_table "ticket_desks", force: :cascade do |t|
@@ -95,4 +97,6 @@ ActiveRecord::Schema.define(version: 2021_05_25_082316) do
   add_foreign_key "reservations", "clients", column: "clients_id"
   add_foreign_key "reservations", "seances", column: "seances_id"
   add_foreign_key "reservations", "ticket_desks", column: "ticket_desks_id"
+  add_foreign_key "seances", "halls", column: "halls_id"
+  add_foreign_key "seances", "movies", column: "movies_id"
 end
