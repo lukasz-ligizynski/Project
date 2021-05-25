@@ -4,7 +4,7 @@ class CreateTickets < ActiveRecord::Migration[6.1]
       t.integer :reservation_id
       t.string :seat
       t.string :type
-      t.integer :price
+      t.float :price
 
       t.timestamps
     end
