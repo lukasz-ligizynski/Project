@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_25_084611) do
+ActiveRecord::Schema.define(version: 2021_05_25_101600) do
 
   create_table "client_promotions", force: :cascade do |t|
-    t.integer "promotions_id"
-    t.integer "client_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "promotions_id"
+    t.integer "clients_id"
+    t.index ["clients_id"], name: "index_client_promotions_on_clients_id"
+    t.index ["promotions_id"], name: "index_client_promotions_on_promotions_id"
   end
 
   create_table "clients", force: :cascade do |t|
@@ -95,6 +97,8 @@ ActiveRecord::Schema.define(version: 2021_05_25_084611) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "client_promotions", "clients", column: "clients_id"
+  add_foreign_key "client_promotions", "promotions", column: "promotions_id"
   add_foreign_key "reservations", "clients", column: "clients_id"
   add_foreign_key "reservations", "seances", column: "seances_id"
   add_foreign_key "reservations", "ticket_desks", column: "ticket_desks_id"
