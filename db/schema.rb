@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_25_080015) do
+ActiveRecord::Schema.define(version: 2021_05_25_080630) do
 
   create_table "client_promotions", force: :cascade do |t|
     t.integer "promotions_id"
@@ -38,10 +38,11 @@ ActiveRecord::Schema.define(version: 2021_05_25_080015) do
 
   create_table "movies", force: :cascade do |t|
     t.string "title"
-    t.integer "duration"
+    t.float "duration"
     t.string "age_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "genre"
   end
 
   create_table "promotions", force: :cascade do |t|
