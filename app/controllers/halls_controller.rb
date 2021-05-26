@@ -1,52 +1,43 @@
+# frozen_string_literal: true
+
 class HallsController < ApplicationController
 
-    before_action :set_hall, only: [:show, :update, :destroy]
+  def index
+    halls = Hall.all
+    render json: HallSerializer.new(halls)
+  end
 
-    def index
-        @halls = Hall.all.map do |hall|
-            {
-                name: hall.name,
-                capacity: hall.capacity
-            }
-        end
-        
-        render json: @halls
-    end
+  def show
+    @hall = Hall.find(params[:id])
+    render json: HallSerializer.new(@hall)
+  end
 
-    def show
-        @hall = {
-        id: @hall.id,name: @hall.name, capacity: @hall.capacity,
-        }
-        render json: @hall
+  def create
+    @hall = Hall.new(hall_params)
+    if @hall.save
+      render json: @hall, status: :created
+    else
+      render json: @hall.errors, status: :unprocessable_entity
     end
+  end
 
-    def create
-        @hall = Hall.new(hall_params)
-        if @hall.save
-            render json: @hall, status: :created
-        else
-            render json: @hall.errors, status: :unprocessable_entity
-        end
+  def update
+    @hall = Hall.find(params[:id])
+    if @hall.update(hall_params)
+      render json: @hall
+    else
+      render json: @hall.errors, status: :unprocessable_entity
     end
+  end
 
-    def update
-        if @hall.update(hall_params)
-            render json: @hall
-        else
-            render json: @hall.errors, status: :unprocessable_entity
-        end
-    end
+  def destroy
+    @hall = Hall.find(params[:id])
+    @hall.destroy
+  end
 
-    def destroy
-        @hall.destroy
-    end
-    
-    private
-    def set_hall
-        @hall = Hall.find(params[:id])
-    end
-        
-    def hall_params
-        params.require(:hall).permit(:name, :capacity)
-    end
+  private
+
+  def hall_params
+    params.require(:hall).permit(:name, :capacity)
+  end
 end

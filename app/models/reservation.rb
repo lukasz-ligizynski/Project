@@ -1,7 +1,9 @@
-class Reservation < ApplicationRecord
-    belongs_to :ticket_desks
-    belongs_to :seances
-    belongs_to :clients
+# frozen_string_literal: true
 
-    has_many :tickets
+class Reservation < ApplicationRecord
+  belongs_to :ticket_desks
+  belongs_to :seances
+  belongs_to :clients
+
+  has_many :tickets
 end
