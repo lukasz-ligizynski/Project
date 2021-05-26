@@ -19,4 +19,12 @@ class HallsController < ActionController::API
             render json: @hall.errors, status: :unprocessable_entity
           end
     end
+
+    def update
+        if @hall.update(hall_params)
+          render json: @hall
+        else
+          render json: @hall.errors, status: :unprocessable_entity
+        end
+      end
 end
