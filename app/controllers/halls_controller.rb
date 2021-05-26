@@ -15,18 +15,18 @@ class HallsController < ApplicationController
   def create
     @hall = Hall.new(hall_params)
     if @hall.save
-      render json: @hall, status: :created
+      render json: HallSerializer.new(@hall), status: :created
     else
-      render json: @hall.errors, status: :unprocessable_entity
+      render json: HallSerializer.new(@hall).errors, status: :unprocessable_entity
     end
   end
 
   def update
     @hall = Hall.find(params[:id])
     if @hall.update(hall_params)
-      render json: @hall
+      render json: HallSerializer.new(@hall)
     else
-      render json: @hall.errors, status: :unprocessable_entity
+      render json: HallSerializer.new(@hall).errors, status: :unprocessable_entity
     end
   end
 
