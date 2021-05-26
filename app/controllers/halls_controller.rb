@@ -14,7 +14,7 @@ class HallsController < ApplicationController
     end
 
     def show
-        @cinema_hall = {
+        @hall = {
         id: @hall.id,hall_name: @hall.hall_number, capacity: @hall.capacity,
         }
         render json: @hall
