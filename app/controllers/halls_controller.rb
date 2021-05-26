@@ -26,5 +26,10 @@ class HallsController < ActionController::API
         else
           render json: @hall.errors, status: :unprocessable_entity
         end
-      end
+    end
+    
+    def destroy
+        @hall.destroy
+        redirect_to root_url, notice: 'The hall has been deleted.'
+    end
 end
