@@ -5,7 +5,7 @@ class HallsController < ApplicationController
     def index
         @halls = Hall.all.map do |hall|
             {
-                name: hall.hall_number,
+                name: hall.number,
                 capacity: hall.capacity
             }
         end
@@ -15,7 +15,7 @@ class HallsController < ApplicationController
 
     def show
         @hall = {
-        id: @hall.id,hall_name: @hall.hall_number, capacity: @hall.capacity,
+        id: @hall.id,number: @hall.number, capacity: @hall.capacity,
         }
         render json: @hall
     end
@@ -47,6 +47,6 @@ class HallsController < ApplicationController
     end
         
     def hall_params
-        params.require(:hall).permit(:hall_number, :capacity)
+        params.require(:hall).permit(:number, :capacity)
     end
 end
