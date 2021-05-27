@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChangeClientPromotions < ActiveRecord::Migration[6.1]
   def change
     remove_column :client_promotions, :promotions_id, :integer
