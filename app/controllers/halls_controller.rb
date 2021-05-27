@@ -19,17 +19,19 @@ class HallsController < ApplicationController
 
   def update
     @hall = repo.find(params[:id])
-    if repo.update(hall_params)
-      render json: HallSerializer.new(@hall)
-    else
-      render json: HallSerializer.new(@hall).errors, status: :unprocessable_entity
-    end
+
+    success = ->(hall) { render json: HallSerializer.new(hall), status: :created }
+    error = ->(hall) { render json: HallSerializer.new(hall).errors, status: :unprocessable_entity }
+
+    UseCase::Hall::UpdateHall.call(@hall, hall_params, success: success, failure: error)
   end
 
   def destroy
     @hall = repo.find(params[:id])
-    repo.destroy
-    render json: {status: "success"}
+    success = -> { render json: {status: 'success'} }
+    error = -> { render json: {status: 'unprocessable_entity'} }
+
+    UseCase::Hall::DeleteHall.call(hall_params, success: success, failure: error)
   end
 
   private
