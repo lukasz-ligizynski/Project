@@ -33,6 +33,7 @@ class HallsController < ApplicationController
   def destroy
     @hall = Hall.find(params[:id])
     @hall.destroy
+    render json: {status: "success"}
   end
 
   private
