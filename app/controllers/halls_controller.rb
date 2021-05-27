@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class HallsController < ApplicationController
   def index
     hall = repo.all
@@ -28,8 +29,8 @@ class HallsController < ApplicationController
 
   def destroy
     @hall = repo.find(params[:id])
-    success = -> { render json: {status: 'success'} }
-    error = -> { render json: {status: 'unprocessable_entity'} }
+    success = -> { render json: { status: 'success' } }
+    error = -> { render json: { status: 'unprocessable_entity' } }
 
     UseCase::Hall::DeleteHall.call(hall_params, success: success, failure: error)
   end

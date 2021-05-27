@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UseCase
   module Hall
     class DeleteHall < UseCase::Base
@@ -16,7 +18,7 @@ module UseCase
       private
 
       def initialize(hall, callbacks, repository)
-        super(hall,callbacks, repository)
+        super(hall, callbacks, repository)
         @hall = hall
         @callbacks = callbacks
         @repository = repository
