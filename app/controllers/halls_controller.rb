@@ -11,12 +11,10 @@ class HallsController < ApplicationController
   end
 
   def create
-    @hall = repo.new_entity(hall_params)
-    if repo.save(@hall)
-      render json: HallSerializer.new(@hall), status: :created
-    else
-      render json: HallSerializer.new(@hall).errors, status: :unprocessable_entity
-    end
+    success = ->(hall) { render json: HallSerializer.new(hall), status: :created }
+    error = ->(hall) { render json: HallSerializer.new(hall).errors, status: :unprocessable_entity }
+
+    UseCase::Hall::Create.new(repo).call(hall_params, success: success, failure: error)
   end
 
   def update
