@@ -11,7 +11,7 @@ class HallsController < ApplicationController
   end
 
   def create
-    @hall = repo.new_entiti(hall_params)
+    @hall = repo.new_entity(hall_params)
     if repo.save(@hall)
       render json: HallSerializer.new(@hall), status: :created
     else

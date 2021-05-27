@@ -1,4 +1,4 @@
 class HallSerializer
-  include FastJsonapi::ObjectSerializer
+  include JSONAPI::Serializer
   attributes :name, :capacity
 end

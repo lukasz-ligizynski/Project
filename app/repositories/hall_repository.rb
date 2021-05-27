@@ -7,7 +7,7 @@ class HallRepository
     Hall.find(id)
   end
 
-  def new_entiti(attrs = nill)
+  def new_entity(attrs = nill)
     Hall.new(attrs)
   end
 
