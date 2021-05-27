@@ -1,20 +1,18 @@
 # frozen_string_literal: true
-
 class HallsController < ApplicationController
-
   def index
-    halls = Hall.all
-    render json: HallSerializer.new(halls)
+    hall = repo.all
+    render json: HallSerializer.new(hall)
   end
 
   def show
-    @hall = Hall.find(params[:id])
+    @hall = repo.find(params[:id])
     render json: HallSerializer.new(@hall)
   end
 
   def create
-    @hall = Hall.new(hall_params)
-    if @hall.save
+    @hall = repo.new_entiti(hall_params)
+    if repo.save(@hall)
       render json: HallSerializer.new(@hall), status: :created
     else
       render json: HallSerializer.new(@hall).errors, status: :unprocessable_entity
@@ -22,8 +20,8 @@ class HallsController < ApplicationController
   end
 
   def update
-    @hall = Hall.find(params[:id])
-    if @hall.update(hall_params)
+    @hall = repo.find(params[:id])
+    if repo.update(hall_params)
       render json: HallSerializer.new(@hall)
     else
       render json: HallSerializer.new(@hall).errors, status: :unprocessable_entity
@@ -31,8 +29,8 @@ class HallsController < ApplicationController
   end
 
   def destroy
-    @hall = Hall.find(params[:id])
-    @hall.destroy
+    @hall = repo.find(params[:id])
+    repo.destroy
     render json: {status: "success"}
   end
 
@@ -40,5 +38,9 @@ class HallsController < ApplicationController
 
   def hall_params
     params.require(:hall).permit(:name, :capacity)
+  end
+
+  def repo
+    @repo ||= HallRepository.new
   end
 end

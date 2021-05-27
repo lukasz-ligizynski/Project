@@ -18,4 +18,8 @@ class HallRepository
   def delete(hall)
     hall.destroy
   end
+
+  def update(attrs)
+    Hall.update(attrs)
+  end
 end
