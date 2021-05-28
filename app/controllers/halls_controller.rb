@@ -1,47 +1,34 @@
 # frozen_string_literal: true
-
 class HallsController < ApplicationController
   def index
-    hall = repo.all
-    render json: HallSerializer.new(hall)
+    @halls = Halls::UseCases::FindAll.new.call
+    render json: Halls::Representer.new(@halls).basic
   end
 
   def show
-    @hall = repo.find(params[:id])
-    render json: HallSerializer.new(@hall)
-  end
-
-  def create
-    success = ->(hall) { render json: HallSerializer.new(hall), status: :created }
-    error = ->(hall) { render json: HallSerializer.new(hall).errors, status: :unprocessable_entity }
-
-    UseCase::Hall::Create.new(repo).call(hall_params, success: success, failure: error)
+    hall = Halls::Repository.new.find_by(params[:id])
+    render json: Halls::Representer.new([hall]).extended
   end
 
   def update
-    @hall = repo.find(params[:id])
-
-    success = ->(hall) { render json: HallSerializer.new(hall), status: :created }
-    error = ->(hall) { render json: HallSerializer.new(hall).errors, status: :unprocessable_entity }
-
-    UseCase::Hall::UpdateHall.call(@hall, hall_params, success: success, failure: error)
+    hall = Halls::UseCases::Update.new.call(id: params[:id], params: hall_params)
+      if hall.valid?
+          render json: hall
+      else
+          render json: hall.errors, status: :unprocessable_entity
+      end
   end
 
   def destroy
-    @hall = repo.find(params[:id])
-    success = -> { render json: { status: 'success' } }
-    error = -> { render json: { status: 'unprocessable_entity' } }
-
-    UseCase::Hall::DeleteHall.call(hall_params, success: success, failure: error)
+    Halls::UseCases::Delete.new.call(id: params[:id])
+    render json: {status: "deleted"}
   end
+
+  
 
   private
-
+  
   def hall_params
     params.require(:hall).permit(:name, :capacity)
-  end
-
-  def repo
-    @repo ||= HallRepository.new
   end
 end
