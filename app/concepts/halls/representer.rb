@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Halls
   class Representer
     attr_reader :halls
@@ -9,9 +11,9 @@ module Halls
     def basic
       halls.map do |hall|
         {
-            id: hall.id,
-            name: hall.name,
-            capacity: hall.capacity
+          id: hall.id,
+          name: hall.name,
+          capacity: hall.capacity
         }
       end
     end

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class HallsController < ApplicationController
   def index
     @halls = Halls::UseCases::FindAll.new.call
@@ -12,22 +13,20 @@ class HallsController < ApplicationController
 
   def update
     hall = Halls::UseCases::Update.new.call(id: params[:id], params: hall_params)
-      if hall.valid?
-          render json: hall
-      else
-          render json: hall.errors, status: :unprocessable_entity
-      end
+    if hall.valid?
+      render json: hall
+    else
+      render json: hall.errors, status: :unprocessable_entity
+    end
   end
 
   def destroy
     Halls::UseCases::Delete.new.call(id: params[:id])
-    render json: {status: "deleted"}
+    render json: { status: 'deleted' }
   end
 
-  
-
   private
-  
+
   def hall_params
     params.require(:hall).permit(:name, :capacity)
   end
