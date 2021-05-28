@@ -2,7 +2,6 @@
 
 class ChangeReservations < ActiveRecord::Migration[6.1]
   def change
-    remove_column :reservations, :movie_id, :integer
     remove_column :reservations, :ticket_desk_id, :integer
     remove_column :reservations, :seance_id, :integer
     remove_column :reservations, :client_id, :integer
