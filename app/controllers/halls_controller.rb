@@ -2,7 +2,7 @@
 class HallsController < ApplicationController
   def index
     @halls = Halls::UseCases::FindAll.new.call
-    render jsonapi: Halls::Representer.new(@halls).basic
+    render json: Halls::Representer.new(@halls).basic
   end
 
   def show
