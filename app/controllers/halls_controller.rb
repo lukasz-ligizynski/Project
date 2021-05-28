@@ -12,7 +12,7 @@ class HallsController < ApplicationController
   end
 
   def update
-    hall = Halls::UseCases::UpdateHall.new.call(id: params[:id], params: hall_params)
+    hall = Halls::UseCases::Update.new.call(id: params[:id], params: hall_params)
     if hall.valid?
       render json: hall
     else
