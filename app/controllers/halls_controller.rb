@@ -25,6 +25,16 @@ class HallsController < ApplicationController
     render json: { status: 'deleted' }
   end
 
+  def create
+    @hall = Halls::UseCases::Create.new.call(params: hall_params)
+
+    if @hall.valid?
+      render json: @hall, status: :created, location: @hall
+    else
+      render json: @hall.errors, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def hall_params
