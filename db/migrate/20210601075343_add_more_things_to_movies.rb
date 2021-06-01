@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddMoreThingsToMovies < ActiveRecord::Migration[6.1]
   def change
     remove_column :movies, :age_type

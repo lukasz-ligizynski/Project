@@ -1,44 +1,46 @@
-require "rails_helper"
+# frozen_string_literal: true
 
-RSpec.describe "Halls requests" do
-  describe "GET /halls" do
-    let!(:hall) { Hall.create(name: "Some name", capacity: 500 ) }
+require 'rails_helper'
 
-    it "works and return status 200" do
-      get("/halls")
+RSpec.describe 'Halls requests' do
+  describe 'GET /halls' do
+    let!(:hall) { Hall.create(name: 'Some name', capacity: 500) }
+
+    it 'works and return status 200' do
+      get('/halls')
       expect(response.status).to eq(200)
     end
   end
 
-  describe "GET /halls/:id" do
-    let!(:hall) { Hall.create(name: "Some name", capacity: 500 ) }
+  describe 'GET /halls/:id' do
+    let!(:hall) { Hall.create(name: 'Some name', capacity: 500) }
 
-    it "works and return status 200" do
+    it 'works and return status 200' do
       get("/halls/#{hall.id}")
       expect(response.status).to eq(200)
     end
   end
 
-  describe "POST /halls" do
-    it "works and return status 201" do
-      post("/halls", params: { hall: {name: "Some name", capacity: 500} } )
+  describe 'POST /halls' do
+    it 'works and return status 201' do
+      post('/halls', params: { hall: { name: 'Some name', capacity: 500 } })
       expect(response.status).to eq(201)
     end
   end
 
-  describe "PUT /halls/:id" do
-    let!(:hall) { Hall.create(name: "Some name", capacity: 500) }
+  describe 'PUT /halls/:id' do
+    let!(:hall) { Hall.create(name: 'Some name', capacity: 500) }
 
-    it "works and return status 200" do
-      put("/halls/#{hall.id}", params: { hall: { id: hall.id,name: "Some name", capacity: 500 } })
+    it 'works and return status 200' do
+      put("/halls/#{hall.id}", params: { hall: { id: hall.id, name: 'Some name', capacity: 500 } })
       expect(response.status).to eq(200)
     end
   end
 
-  describe "DELETE /halls/:id" do
-    let!(:hall) { Hall.create(name: "Some name", capacity: 500) }
+  describe 'DELETE /halls/:id' do
+    let!(:hall) { Hall.create(name: 'Some name', capacity: 500) }
 
-    it "works and return status 200" do
+    it 'works and return status 200' do
       delete("/halls/#{hall.id}")
       expect(response.status).to eq(200)
     end
