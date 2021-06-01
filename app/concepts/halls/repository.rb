@@ -2,7 +2,7 @@
 
 module Halls
   class Repository < ::Base::BaseRepository
-    def initialize(adapter: Hall)
+    def super initialize(adapter: Hall)
       @adapter = adapter
     end
   end
