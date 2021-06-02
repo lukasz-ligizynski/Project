@@ -3,7 +3,7 @@
 module Movies
   class Repository < ::Base::BaseRepository
     def initialize(adapter: Movie)
-      @adapter = adapter
+      super(adapter: adapter)
     end
   end
 end
