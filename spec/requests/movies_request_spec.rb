@@ -4,10 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'Movies requests' do
   describe 'GET /movies' do
-    let!(:movie) do
-      Movie.create(title: 'Some Title', duration: '120', adult_only: 0, description: 'Some description',
-                   genre: 'some genre')
-    end
+    let!(:movie) { build(:movie) }
 
     it 'works and return status 200' do
       get('/movies')
@@ -16,10 +13,7 @@ RSpec.describe 'Movies requests' do
   end
 
   describe 'GET /movies/:id' do
-    let!(:movie) do
-      Movie.create(title: 'Some Title', duration: '120', adult_only: 0, description: 'Some description',
-                   genre: 'some genre')
-    end
+    let!(:movie) { build(:movie) }
 
     it 'works and return status 200' do
       get("/movies/#{movie.id}")
@@ -37,10 +31,7 @@ RSpec.describe 'Movies requests' do
   end
 
   describe 'PUT /movies/:id' do
-    let!(:movie) do
-      Movie.create(title: 'Some Title', duration: '120', adult_only: 0, description: 'Some description',
-                   genre: 'some genre')
-    end
+    let!(:movie) { create(:movie) }
 
     it 'works and return status 200' do
       put("/movies/#{movie.id}",
@@ -51,10 +42,7 @@ RSpec.describe 'Movies requests' do
   end
 
   describe 'DELETE /movies/:id' do
-    let!(:movie) do
-      Movie.create(title: 'Some Title', duration: '120', adult_only: 0, description: 'Some description',
-                   genre: 'some genre')
-    end
+    let!(:movie) { create(:movie) }
 
     it 'works and return status 200' do
       delete("/movies/#{movie.id}")

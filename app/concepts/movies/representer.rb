@@ -3,7 +3,7 @@
 module Movies
   class Representer
     attr_reader :movies
-    
+
     def initialize(movies)
       @movies = movies
     end
@@ -21,8 +21,8 @@ module Movies
       end
     end
 
-      def extended
-        movies.map do |movie|
+    def extended
+      movies.map do |movie|
         return movie
       end
     end

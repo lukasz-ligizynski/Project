@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'Halls requests' do
   describe 'GET /halls' do
-    let!(:hall) { Hall.create(name: 'Some name', capacity: 500) }
+    let!(:hall) { build(:hall) }
 
     it 'works and return status 200' do
       get('/halls')
@@ -13,7 +13,7 @@ RSpec.describe 'Halls requests' do
   end
 
   describe 'GET /halls/:id' do
-    let!(:hall) { Hall.create(name: 'Some name', capacity: 500) }
+    let!(:hall) { build(:hall) }
 
     it 'works and return status 200' do
       get("/halls/#{hall.id}")
@@ -29,7 +29,7 @@ RSpec.describe 'Halls requests' do
   end
 
   describe 'PUT /halls/:id' do
-    let!(:hall) { Hall.create(name: 'Some name', capacity: 500) }
+    let!(:hall) { create(:hall) }
 
     it 'works and return status 200' do
       put("/halls/#{hall.id}", params: { hall: { id: hall.id, name: 'Some name', capacity: 500 } })
@@ -38,7 +38,7 @@ RSpec.describe 'Halls requests' do
   end
 
   describe 'DELETE /halls/:id' do
-    let!(:hall) { Hall.create(name: 'Some name', capacity: 500) }
+    let!(:hall) { create(:hall) }
 
     it 'works and return status 200' do
       delete("/halls/#{hall.id}")
