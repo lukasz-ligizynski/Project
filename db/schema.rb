@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_210_526_120_417) do
+ActiveRecord::Schema.define(version: 20_210_601_075_343) do
   create_table 'client_promotions', force: :cascade do |t|
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
@@ -43,10 +43,11 @@ ActiveRecord::Schema.define(version: 20_210_526_120_417) do
   create_table 'movies', force: :cascade do |t|
     t.string 'title'
     t.float 'duration'
-    t.string 'age_type'
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
     t.string 'genre'
+    t.boolean 'adult_only'
+    t.string 'description'
   end
 
   create_table 'promotions', force: :cascade do |t|

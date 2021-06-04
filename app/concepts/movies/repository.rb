@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-module Halls
+module Movies
   class Repository < ::Base::BaseRepository
-    def initialize(adapter: Hall)
+    def initialize(adapter: Movie)
       super(adapter: adapter)
     end
   end
