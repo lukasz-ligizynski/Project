@@ -27,12 +27,12 @@ RSpec.describe 'Seances requests' do
 
     it 'works and return status 201' do
       post("/seances",
-            seance: { 
+           params: { seance: { 
             starts_at: DateTime.parse("12/06/2021 5:00"),
             ends_at: DateTime.parse("12/06/2021 10:00"), 
             duration: 120,
             movie: movie.id, 
-            hall: hall.id } )
+            hall: hall.id } } )
       expect(response.status).to eq(201)
     end
   end
