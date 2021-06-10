@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChangeAllReferences < ActiveRecord::Migration[6.1]
   def change
     remove_index :client_promotions, :promotions_id
@@ -7,7 +9,7 @@ class ChangeAllReferences < ActiveRecord::Migration[6.1]
     remove_index :reservations, :clients_id
     remove_column :reservations, :clients_id
     add_reference :reservations, :client, index: true, foreign_key: true
-    
+
     remove_index :reservations, :seances_id
     remove_column :reservations, :seances_id
     add_reference :reservations, :seance, index: true, foreign_key: true
@@ -19,7 +21,7 @@ class ChangeAllReferences < ActiveRecord::Migration[6.1]
     remove_index :seances, :halls_id
     remove_column :seances, :halls_id
     add_reference :seances, :hall, index: true, foreign_key: true
-   
+
     remove_index :seances, :movies_id
     remove_column :seances, :movies_id
     add_reference :seances, :movie, index: true, foreign_key: true
