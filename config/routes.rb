@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   root 'halls#index'
   resources :halls
   resources :movies
+  resources :seances
 end

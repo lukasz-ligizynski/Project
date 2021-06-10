@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
 class ClientPromotion < ApplicationRecord
-  belongs_to :promotions
-  belongs_to :clients
+  belongs_to :promotion
+  belongs_to :client
 end
