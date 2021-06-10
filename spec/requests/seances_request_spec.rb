@@ -31,8 +31,8 @@ RSpec.describe 'Seances requests' do
             starts_at: DateTime.parse("12/06/2021 5:00"),
             ends_at: DateTime.parse("12/06/2021 10:00"), 
             duration: 120,
-            movie: movie.id, 
-            hall: hall.id } } )
+            movie_id: movie.id, 
+            hall_id: hall.id } } )
       expect(response.status).to eq(201)
     end
   end

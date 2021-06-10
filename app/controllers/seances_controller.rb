@@ -26,6 +26,7 @@ class SeancesController < ApplicationController
   end
 
   def create
+
     @seance = Seances::UseCases::Create.new.call(params: seance_params)
 
     if @seance.valid?
