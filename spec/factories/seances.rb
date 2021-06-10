@@ -3,8 +3,7 @@
 FactoryBot.define do
   factory :seance do
     duration { 120 }
-
-    association :movie
-    association :hall
+    movie_id { create(:movie).id }
+    hall_id { create(:hall).id }
   end
 end
