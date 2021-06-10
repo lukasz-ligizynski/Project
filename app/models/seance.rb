@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class Seance < ApplicationRecord
-  belongs_to :halls
-  belongs_to :movies
+  belongs_to :hall
+  belongs_to :movie
 
   has_many :reservations
 end

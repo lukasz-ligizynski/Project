@@ -22,17 +22,17 @@ RSpec.describe 'Seances requests' do
   end
 
   describe 'POST /seances' do
-    let(:movie) { create(:movie).id }
-    let(:hall) { create(:hall).id }
+    let(:movie) { create(:movie) }
+    let(:hall) { create(:hall)}
 
     it 'works and return status 201' do
       post("/seances",
-           params: { seance: { 
+            seance: { 
             starts_at: DateTime.parse("12/06/2021 5:00"),
             ends_at: DateTime.parse("12/06/2021 10:00"), 
             duration: 120,
-            movie_id: movie, 
-            hall_id: hall } } )
+            movie: movie.id, 
+            hall: hall.id } )
       expect(response.status).to eq(201)
     end
   end
