@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :movies
   resources :seances
   resources :tickets
+  resources :ticket_desks
 end

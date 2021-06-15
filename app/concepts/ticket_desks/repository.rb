@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-module Ticket_desks
+module TicketDesks
   class Repository < ::Base::BaseRepository
-    def initialize(adapter: Ticket_desk)
+    def initialize(adapter: TicketDesk)
       super(adapter: adapter)
     end
   end

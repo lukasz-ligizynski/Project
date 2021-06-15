@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-module Ticket_desks
+module TicketDesks
   module UseCases
     class Update
       attr_reader :repository
 
-      def initialize(repository: Ticket_desks::Repository.new)
+      def initialize(repository: TicketDesks::Repository.new)
         @repository = repository
       end
 
