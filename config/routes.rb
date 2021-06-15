@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :seances
   resources :tickets
   resources :ticket_desks
+  resources :clients
 end
