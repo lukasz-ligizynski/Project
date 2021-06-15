@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :tickets
   resources :ticket_desks
   resources :clients
+  resources :reservations
 end
