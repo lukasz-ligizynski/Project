@@ -12,6 +12,7 @@ module Reservations
       reservations.map do |reservation|
         {
           id: reservation.id,
+          status: reservation.status,
           seance_id: reservation.seance_id,
           ticket_desk_id: reservation.ticket_desk_id,
           client_id: reservation.client_id

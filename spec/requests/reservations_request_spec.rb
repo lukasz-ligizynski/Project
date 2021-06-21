@@ -29,7 +29,7 @@ RSpec.describe 'Reservations requests' do
     it 'works and return status 201' do
       post('/reservations',
         params: { reservation: {
-          status: 'paid',
+          status: 'created',
           client_id: client.id,
           seance_id: seance.id,
           ticket_desk_id: ticket_desk.id

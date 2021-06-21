@@ -11,8 +11,19 @@ module Reservations
 
       def call(params:)
         repository.create(params)
+        cancel_reservation
       end
       
+      def cancel_reservation
+        unless @reservation.status == 'paid'
+          CancelReservationsJob.set(wait_until: cancel_time).perform_later(reservation.id)
+        end
+      end
+
+      def cancel_time
+        @seance = Seances::Repository.new.find(id: @reservation.seance_id)
+        @seance.starts_at - 30.minutes
+      end
     end
   end
 end
