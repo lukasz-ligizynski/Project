@@ -23,7 +23,7 @@ RSpec.describe 'Ticket_desks requests' do
 
   describe 'POST /ticket_desks' do
     it 'works and return status 201' do
-      post('/ticket_desks', params: { ticket_desk: { offline: false}})
+      post('/ticket_desks', params: { ticket_desk: { offline: false } })
       expect(response.status).to eq(201)
     end
   end
@@ -32,7 +32,7 @@ RSpec.describe 'Ticket_desks requests' do
     let!(:ticket_desk) { create(:ticket_desk) }
 
     it 'works and return status 200' do
-      put("/ticket_desks/#{ticket_desk.id}", params: { ticket_desk: { id: ticket_desk.id, offline: false}})
+      put("/ticket_desks/#{ticket_desk.id}", params: { ticket_desk: { id: ticket_desk.id, offline: false } })
       expect(response.status).to eq(200)
     end
   end

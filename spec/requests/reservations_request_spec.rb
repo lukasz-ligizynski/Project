@@ -28,13 +28,13 @@ RSpec.describe 'Reservations requests' do
 
     it 'works and return status 201' do
       post('/reservations',
-        params: { reservation: {
-          status: 'created',
-          client_id: client.id,
-          seance_id: seance.id,
-          ticket_desk_id: ticket_desk.id
-        } })
-     
+           params: { reservation: {
+             status: 'created',
+             client_id: client.id,
+             seance_id: seance.id,
+             ticket_desk_id: ticket_desk.id
+           } })
+
       expect(response.status).to eq(201)
       puts(response.body)
     end
@@ -44,7 +44,7 @@ RSpec.describe 'Reservations requests' do
     let!(:reservation) { create(:reservation) }
 
     it 'works and return status 200' do
-      put("/reservations/#{reservation.id}", params: { reservation: { status: 'paid'} })
+      put("/reservations/#{reservation.id}", params: { reservation: { status: 'paid' } })
       expect(response.status).to eq(200)
     end
   end

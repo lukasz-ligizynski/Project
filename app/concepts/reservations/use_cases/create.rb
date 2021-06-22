@@ -14,9 +14,9 @@ module Reservations
         cancel_reservation
         @reservation
       end
-      
+
       def cancel_reservation
-        unless @reservation.status == "paid"
+        unless @reservation.status == 'paid'
           CancelReservationsJob.set(wait_until: cancel_time).perform_later(@reservation.id)
         end
       end

@@ -18,4 +18,4 @@ Movie.create(title: 'Second Movie', duration: 210, adult_only: 1,
              description: 'Some description of the second movie', genre: 'drama')
 Movie.create(title: 'First Movie 2', duration: 100, adult_only: 0,
              description: 'Some description of the third movie', genre: 'comedy')
-Seance.create(duration: 380, seance_date: "2021/07/16 08:00:00")
+Seance.create(duration: 380, seance_date: '2021/07/16 08:00:00')

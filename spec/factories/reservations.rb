@@ -5,6 +5,6 @@ FactoryBot.define do
     status { 'paid' }
     client { create(:client) }
     ticket_desk { create(:ticket_desk) }
-    seance { create(:seance)}
+    seance { create(:seance) }
   end
 end

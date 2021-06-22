@@ -32,7 +32,8 @@ RSpec.describe 'Clients requests' do
     let!(:client) { create(:client) }
 
     it 'works and return status 200' do
-      put("/clients/#{client.id}", params: { client: { name: 'Some name', age: 18, email: 'example@ex.com', real_user: true } })
+      put("/clients/#{client.id}",
+          params: { client: { name: 'Some name', age: 18, email: 'example@ex.com', real_user: true } })
       expect(response.status).to eq(200)
     end
   end

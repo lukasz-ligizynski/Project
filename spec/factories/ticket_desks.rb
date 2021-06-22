@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :ticket_desk do
-  offline {false}
+    offline { false }
   end
 end

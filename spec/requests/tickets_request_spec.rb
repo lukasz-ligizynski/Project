@@ -25,12 +25,12 @@ RSpec.describe 'Tickets requests' do
     let(:reservation) { create(:reservation) }
     it 'works and return status 201' do
       post('/tickets',
-        params: { ticket: {
-          ticket_type: 'normal',
-          price: 25,
-          seat: '2F',
-          reservation_id: reservation.id
-        } })
+           params: { ticket: {
+             ticket_type: 'normal',
+             price: 25,
+             seat: '2F',
+             reservation_id: reservation.id
+           } })
       expect(response.status).to eq(201)
     end
   end
@@ -39,7 +39,7 @@ RSpec.describe 'Tickets requests' do
     let!(:ticket) { create(:ticket) }
 
     it 'works and return status 200' do
-      put("/tickets/#{ticket.id}", params: { ticket: { id: ticket.id, ticket_type: 'normal'}})
+      put("/tickets/#{ticket.id}", params: { ticket: { id: ticket.id, ticket_type: 'normal' } })
       expect(response.status).to eq(200)
     end
   end
