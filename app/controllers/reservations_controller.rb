@@ -27,7 +27,6 @@ class ReservationsController < ApplicationController
 
   def create
     @reservation = Reservations::UseCases::Create.new.call(params: reservation_params)
-
     if @reservation.valid?
       render json: @reservation, status: :created, location: @reservation
     else

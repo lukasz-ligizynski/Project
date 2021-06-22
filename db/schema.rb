@@ -72,8 +72,7 @@ ActiveRecord::Schema.define(version: 20_210_610_111_158) do
     t.integer 'duration'
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
-    t.datetime 'starts_at'
-    t.datetime 'ends_at'
+    t.datetime 'seance_date'
     t.integer 'hall_id'
     t.integer 'movie_id'
     t.index ['hall_id'], name: 'index_seances_on_hall_id'

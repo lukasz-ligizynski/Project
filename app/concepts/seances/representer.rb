@@ -12,8 +12,7 @@ module Seances
       seances.map do |seance|
         {
           id: seance.id,
-          starts_at: seance.starts_at,
-          ends_at: seance.ends_at,
+          seance_date: seance.seance_date,
           hall_id: seance.hall_id,
           movie_id: seance.movie_id
         }

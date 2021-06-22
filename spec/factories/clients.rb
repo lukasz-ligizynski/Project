@@ -5,6 +5,6 @@ FactoryBot.define do
     name { 'some name' }
     age { 18 }
     real_user { true }
-    email { 'example@ex.com'}
+    email { 'example@ex.com' }
   end
 end

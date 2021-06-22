@@ -12,9 +12,10 @@ Hall.create(name: 'Green Hall', capacity: 200)
 Hall.create(name: 'Second Hall', capacity: 400)
 Hall.create(name: 'Oh no Hall', capacity: 100)
 
-Movie.create(title: 'First Movie', duration: '120', adult_only: 0, description: 'Some description of the first movie',
+Movie.create(title: 'First Movie', duration: 120, adult_only: 0, description: 'Some description of the first movie',
              genre: 'comedy')
-Movie.create(title: 'Second Movie', duration: '210', adult_only: 1,
+Movie.create(title: 'Second Movie', duration: 210, adult_only: 1,
              description: 'Some description of the second movie', genre: 'drama')
-Movie.create(title: 'First Movie 2', duration: '100', adult_only: 0,
+Movie.create(title: 'First Movie 2', duration: 100, adult_only: 0,
              description: 'Some description of the third movie', genre: 'comedy')
+Seance.create(duration: 380, seance_date: '2021/07/16 08:00:00')

@@ -14,7 +14,7 @@ module Tickets
           id: ticket.id,
           price: ticket.price,
           seat: ticket.seat,
-          reservation_id:  ticket.reservation_id
+          reservation_id: ticket.reservation_id
         }
       end
     end

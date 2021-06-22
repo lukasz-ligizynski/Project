@@ -28,8 +28,7 @@ RSpec.describe 'Seances requests' do
     it 'works and return status 201' do
       post('/seances',
            params: { seance: {
-             starts_at: DateTime.parse('12/06/2021 5:00'),
-             ends_at: DateTime.parse('12/06/2021 10:00'),
+             seance_date: DateTime.parse('12/06/2021 5:00'),
              duration: 120,
              movie_id: movie.id,
              hall_id: hall.id
