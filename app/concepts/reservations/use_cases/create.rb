@@ -22,7 +22,7 @@ module Reservations
 
       def cancel_time
         @seance ||= Seances::Repository.new.find_by(@reservation.seance_id)
-        @seance.starts_at - 30.minutes
+        @seance.seance_date - 30.minutes
       end
     end
   end

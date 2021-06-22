@@ -22,9 +22,9 @@ RSpec.describe 'Reservations requests' do
   end
 
   describe 'POST /reservations' do
-    let(:seance) { create(:seance) }
-    let(:client) { create(:client) }
-    let(:ticket_desk) { create(:ticket_desk) }
+    let!(:seance) { create :seance }
+    let!(:client) { create :client }
+    let!(:ticket_desk) { create :ticket_desk }
 
     it 'works and return status 201' do
       post('/reservations',
@@ -34,7 +34,9 @@ RSpec.describe 'Reservations requests' do
           seance_id: seance.id,
           ticket_desk_id: ticket_desk.id
         } })
+     
       expect(response.status).to eq(201)
+      puts(response.body)
     end
   end
 
