@@ -12,6 +12,7 @@ module Reservations
       def call(params:)
         @reservation = repository.create(params)
         cancel_reservation
+        @reservation
       end
       
       def cancel_reservation
